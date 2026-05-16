@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Aether Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&amp;family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#00e5ff",
+                        secondary: "#ff6a00",
+                        "background-light": "#f0f4f8",
+                        "background-dark": "#0a0a0f",
+                        panel: "rgba(20, 20, 30, 0.7)",
+                        border: "rgba(0, 229, 255, 0.2)",
+                    },
+                    fontFamily: {
+                        display: ["Orbitron", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                    backgroundImage: {
+                        'hero-glow': 'radial-gradient(circle at center, rgba(0, 229, 255, 0.15) 0%, transparent 70%)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .neon-border {
+            border: 1px solid rgba(0, 229, 255, 0.3);
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.1), inset 0 0 10px rgba(0, 229, 255, 0.1);
+        }
+        .neon-text {
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+        }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-gray-100 font-body overflow-x-hidden transition-colors duration-300">
+<nav class="fixed w-full z-50 glass border-b border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex-shrink-0 flex items-center space-x-3 cursor-pointer group">
+<span class="material-icons text-primary text-3xl group-hover:text-secondary transition-colors">memory</span>
+<span class="font-display font-bold text-2xl tracking-widest text-gray-900 dark:text-white neon-text">AETHER</span>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-8">
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wide transition-colors" href="#">Features</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wide transition-colors" href="#">Showcase</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wide transition-colors" href="#">Ecosystem</a>
+<a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wide transition-colors" href="#">Community</a>
+</div>
+</div>
+<div>
+<button class="bg-primary text-background-dark font-display font-bold uppercase tracking-wider py-2 px-6 rounded hover:bg-secondary transition-colors shadow-[0_0_15px_rgba(0,229,255,0.5)]">Get Started</button>
+</div>
+</div>
+</div>
+</nav>
+<section class="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden bg-hero-glow">
+<div class="absolute left-10 top-1/3 glass p-4 rounded neon-border hidden lg:block transform -translate-y-1/2">
+<div class="text-xs text-primary font-display mb-1">// RENDER STATS</div>
+<div class="text-2xl font-bold">144 FPS</div>
+<div class="text-sm text-gray-400">4K Resolution</div>
+</div>
+<div class="absolute right-10 bottom-1/3 glass p-4 rounded neon-border hidden lg:block transform translate-y-1/2">
+<div class="text-xs text-secondary font-display mb-1">// POLY COUNT</div>
+<div class="text-2xl font-bold">8.4B+</div>
+<div class="text-sm text-gray-400">Micro-polygons</div>
+</div>
+<div class="z-10 text-center max-w-5xl px-4 flex flex-col items-center">
+<div class="mb-12 relative w-full max-w-2xl mx-auto h-[400px]">
+<img alt="Aether Engine Metallic Logo" class="absolute inset-0 w-full h-full object-contain filter drop-shadow-[0_0_50px_rgba(0,229,255,0.3)] hover:drop-shadow-[0_0_80px_rgba(255,106,0,0.4)] transition-all duration-700 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCOuN261CLK4Nu5JSGq3bhFaYU9JebTtDw-YVsBDMTmeNqAAIYJoGfQS2GG0mdprVyJzEDh6TO50bh_n1_lyY549xD_zSO0wi5Ew364dh5FRLtA0xs2l-Pa_oydSyR7MU6lBd-MxIibFQ8AjIpdSEHJ7DrE-UYzw-e_x40ZYP-A9AwzC2aF4CbaEpTukzTQ4_wRy6zBuwPslM0X0TAQEJ12V-k2FLvyblMXVkYKWvHUEnH_xakALXkcaYESGvZ5YnmfK_8lzVuI5o"/>
+</div>
+<h1 class="text-5xl md:text-7xl font-display font-black tracking-tighter mb-6 text-gray-900 dark:text-white leading-tight">
+                BUILD WORLDS <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">BEYOND IMAGINATION</span>
+</h1>
+<p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl font-light">
+                Next-gen real-time rendering for the future of interactive entertainment.
+            </p>
+<div class="flex flex-col sm:flex-row gap-6">
+<button class="bg-primary hover:bg-white text-background-dark font-display font-bold uppercase tracking-widest py-4 px-10 rounded transition-all duration-300 shadow-[0_0_20px_rgba(0,229,255,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.8)] flex items-center justify-center">
+<span class="material-icons mr-2">download</span>
+                    Download SDK
+                </button>
+<button class="glass hover:bg-white/10 text-gray-900 dark:text-white border border-primary/50 font-display font-bold uppercase tracking-widest py-4 px-10 rounded transition-all duration-300 flex items-center justify-center">
+<span class="material-icons mr-2">play_circle</span>
+                    Watch Demo
+                </button>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-64 bg-gradient-to-t from-background-dark to-transparent z-0"></div>
+</section>
+<section class="py-24 bg-background-light dark:bg-[#050508] relative border-t border-white/5">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-20">
+<h2 class="text-sm font-display text-primary tracking-[0.3em] mb-4 uppercase">// Core Architecture</h2>
+<h3 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">UNLIMITED POWER</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="glass p-8 rounded-xl neon-border hover:-translate-y-2 transition-transform duration-300 group">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 border border-primary/30 group-hover:bg-primary/20 transition-colors">
+<span class="material-icons text-primary text-2xl">layers</span>
+</div>
+<h4 class="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">Nanite Rendering</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Virtualize micropolygon geometry to create games with massive amounts of geometric detail, rendering film-quality source art directly.</p>
+</div>
+<div class="glass p-8 rounded-xl neon-border hover:-translate-y-2 transition-transform duration-300 group">
+<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-6 border border-secondary/30 group-hover:bg-secondary/20 transition-colors">
+<span class="material-icons text-secondary text-2xl">wb_sunny</span>
+</div>
+<h4 class="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white group-hover:text-secondary transition-colors">Real-Time Ray Tracing</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Hardware-accelerated ray tracing delivers accurate global illumination, reflections, and shadows for unparalleled photorealism.</p>
+</div>
+<div class="glass p-8 rounded-xl neon-border hover:-translate-y-2 transition-transform duration-300 group">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 border border-primary/30 group-hover:bg-primary/20 transition-colors">
+<span class="material-icons text-primary text-2xl">face</span>
+</div>
+<h4 class="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">MetaHuman System</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Create fully rigged, high-fidelity digital humans in minutes. Animate them seamlessly with our advanced ML-driven mocap tools.</p>
+</div>
+<div class="glass p-8 rounded-xl neon-border hover:-translate-y-2 transition-transform duration-300 group">
+<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-6 border border-secondary/30 group-hover:bg-secondary/20 transition-colors">
+<span class="material-icons text-secondary text-2xl">public</span>
+</div>
+<h4 class="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white group-hover:text-secondary transition-colors">Procedural Worlds</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Node-based procedural generation tools allow for the creation of vast, unique environments with minimal manual placement.</p>
+</div>
+<div class="glass p-8 rounded-xl neon-border hover:-translate-y-2 transition-transform duration-300 group">
+<div class="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mb-6 border border-primary/30 group-hover:bg-primary/20 transition-colors">
+<span class="material-icons text-primary text-2xl">psychology</span>
+</div>
+<h4 class="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white group-hover:text-primary transition-colors">AI Assisted Dev</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">Leverage integrated LLMs to generate code, write dialogue, or optimize assets, accelerating your production pipeline.</p>
+</div>
+<div class="glass p-8 rounded-xl neon-border hover:-translate-y-2 transition-transform duration-300 group">
+<div class="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mb-6 border border-secondary/30 group-hover:bg-secondary/20 transition-colors">
+<span class="material-icons text-secondary text-2xl">movie</span>
+</div>
+<h4 class="text-xl font-display font-bold mb-3 text-gray-900 dark:text-white group-hover:text-secondary transition-colors">Cinematic Sequencer</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">A non-linear editor tailored for real-time filmmaking. Direct cameras, lights, and characters with timeline-based precision.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="relative min-h-screen flex items-center parallax bg-[url('https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2000&amp;q=80')]">
+<div class="absolute inset-0 bg-background-dark/80 backdrop-blur-sm"></div>
+<div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-sm font-display text-primary tracking-[0.3em] mb-4 uppercase">// Visual Showcase</h2>
+<h3 class="text-4xl md:text-5xl font-display font-bold text-white">NEXT-GEN FIDELITY</h3>
+</div>
+<button class="hidden md:flex items-center text-primary hover:text-white transition-colors font-display text-sm tracking-wider uppercase">
+                    View Gallery <span class="material-icons ml-2">arrow_forward</span>
+</button>
+</div>
+<div class="relative rounded-2xl overflow-hidden border border-white/20 shadow-2xl group h-[614px]">
+<img alt="Cinematic game environment showcase" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB27CqPx60noOMvX1SE_tCo0H3zxsrY9YmE6vTrHDD0a7bDequRW6uKh8pJ63zuhoWmA_WeGUHYldSDCbRxqOOoMAJ5qwx6ZbtyZjELVBIrJu_g6gDq5bof75wsqMhNsX6Jc6fqkGLWpvdr7-P8ScznWZxfRgveGuXNms5OFheYCkaDD3IZqv8lFkZr3wc8_UL8Ktr-ALa2N_FeJbJt1fcVCcoarqUHuEfHRpvkJf7bCsbi9u3Pmq2F-ICMgz8sosVfr9bqlzD_LG4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent"></div>
+<div class="absolute top-6 left-6 glass px-3 py-1.5 rounded-full border-primary/30 flex items-center space-x-2">
+<div class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+<span class="text-xs font-display text-white tracking-widest">LIVE RENDER</span>
+</div>
+<div class="absolute top-6 right-6 flex flex-col space-y-2 items-end">
+<div class="glass px-3 py-1.5 rounded border-white/10 text-xs font-mono text-primary">MS: 16.67</div>
+<div class="glass px-3 py-1.5 rounded border-white/10 text-xs font-mono text-secondary">MEM: 4.2GB</div>
+</div>
+<div class="absolute bottom-8 left-8">
+<h4 class="text-3xl font-display font-bold text-white mb-2 shadow-black drop-shadow-lg">PROJECT NEON</h4>
+<p class="text-gray-300 max-w-md text-sm shadow-black drop-shadow-md">Demonstrating full dynamic global illumination and nanite geometry streaming in an open-world urban setting.</p>
+</div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30">
+<button class="w-20 h-20 rounded-full glass flex items-center justify-center hover:bg-primary/20 hover:scale-110 transition-all border border-primary/50 text-white">
+<span class="material-icons text-4xl">play_arrow</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-[#0a0a0f] border-t border-white/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+<div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center mb-16">
+<h2 class="text-sm font-display text-primary tracking-[0.3em] mb-4 uppercase">// Developer Hub</h2>
+<h3 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">EXTENSIBLE ECOSYSTEM</h3>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="glass rounded-xl p-1 border border-white/10 shadow-[0_0_30px_rgba(0,229,255,0.1)]">
+<div class="bg-[#0f0f15] rounded-lg p-6 relative overflow-hidden">
+<div class="flex items-center space-x-2 mb-6 border-b border-white/10 pb-4">
+<div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+<div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+<span class="text-xs text-gray-500 ml-4 font-mono">AetherScript Editor - PlayerController.as</span>
+</div>
+<pre class="text-sm font-mono text-gray-300 overflow-x-auto"><span class="text-purple-400">class</span> <span class="text-yellow-300">PlayerController</span> <span class="text-purple-400">extends</span> <span class="text-green-300">Character</span> {
+  <span class="text-blue-400">@Expose</span>
+  <span class="text-purple-400">float</span> moveSpeed = <span class="text-secondary">600.0f</span>;
+  <span class="text-purple-400">void</span> <span class="text-blue-300">Tick</span>(<span class="text-purple-400">float</span> delta) {
+    <span class="text-gray-500">// Handle neural-net predictive movement</span>
+    <span class="text-purple-400">var</span> input = InputManager.<span class="text-blue-300">GetVector</span>();
+    <span class="text-purple-400">if</span> (input.<span class="text-blue-300">Length</span>() &gt; <span class="text-secondary">0</span>) {
+      <span class="text-purple-400">this</span>.<span class="text-blue-300">AddMovementInput</span>(input * moveSpeed * delta);
+    }
+  }
+}</pre>
+<div class="absolute bottom-6 right-6 glass p-3 border-primary/20 rounded border text-xs">
+<div class="flex items-center text-green-400 mb-1">
+<span class="material-icons text-sm mr-1">check_circle</span> Build Successful
+                            </div>
+<div class="text-gray-400">0 Errors, 0 Warnings</div>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div class="flex gap-4 items-start">
+<div class="mt-1 w-10 h-10 rounded bg-primary/10 flex items-center justify-center border border-primary/20 shrink-0">
+<span class="material-icons text-primary">extension</span>
+</div>
+<div>
+<h4 class="text-xl font-display font-bold text-gray-900 dark:text-white mb-2">Marketplace Integration</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm">Access thousands of AAA-quality assets, plugins, and full project templates directly within the editor interface.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="mt-1 w-10 h-10 rounded bg-secondary/10 flex items-center justify-center border border-secondary/20 shrink-0">
+<span class="material-icons text-secondary">code</span>
+</div>
+<div>
+<h4 class="text-xl font-display font-bold text-gray-900 dark:text-white mb-2">Language Agnostic</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm">Write gameplay logic in C++, Rust, or our native AetherScript. Node-based visual scripting available for rapid prototyping.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start">
+<div class="mt-1 w-10 h-10 rounded bg-primary/10 flex items-center justify-center border border-primary/20 shrink-0">
+<span class="material-icons text-primary">cloud_sync</span>
+</div>
+<div>
+<h4 class="text-xl font-display font-bold text-gray-900 dark:text-white mb-2">Cloud Collaboration</h4>
+<p class="text-gray-600 dark:text-gray-400 text-sm">Real-time multi-user editing. See your teammates' cursors and changes in the viewport as they happen.</p>
+</div>
+</div>
+<button class="mt-4 border border-primary text-primary hover:bg-primary hover:text-background-dark font-display font-bold uppercase tracking-wide py-3 px-8 rounded transition-colors text-sm">
+                        Explore Documentation
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-background-light dark:bg-[#07070a] border-t border-white/5 relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-sm font-display text-primary tracking-[0.3em] mb-4 uppercase">// Creators</h2>
+<h3 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">BUILT FOR VISIONARIES</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="glass p-8 rounded-xl relative border-t-2 border-t-primary/50">
+<span class="material-icons text-4xl text-primary/20 absolute top-4 left-4">format_quote</span>
+<p class="text-gray-600 dark:text-gray-300 text-sm italic mb-6 relative z-10 pt-4">"Aether Engine completely transformed our pipeline. We achieved 60fps on console with visual fidelity we thought was years away."</p>
+<div class="flex items-center">
+<img alt="Avatar of Tech Director" class="w-12 h-12 rounded-full border-2 border-primary/30 mr-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBod7XvYnEh2Alp7Rfc_oLk7qmqQlvuCgclYO-ZLopnU7_iLdlNdyFmEbKjIXlBvtCUW1QsIFGUyk0k7gjYKCCBvUUKgUNKm9iOLAoFa3vEkMyrZTrpU8A6Jidum-3EA4ciaVToGapPBQeudhG3J2XMMzCIgdmmtORpr1JYaJbursWUlKe1fBgw52KomxqQPixXbUQOltplbiCUY9aK0w0hWWqIrQNL50nxJ_M-TRqkikcUBMkUkUxzIE8M9NW7B8sEPNprHEKcutc"/>
+<div>
+<div class="font-bold text-gray-900 dark:text-white text-sm">Marcus Vance</div>
+<div class="text-primary text-xs uppercase tracking-wider font-display">Tech Director, Nova Studios</div>
+</div>
+</div>
+</div>
+<div class="glass p-8 rounded-xl relative border-t-2 border-t-secondary/50 transform md:-translate-y-4">
+<span class="material-icons text-4xl text-secondary/20 absolute top-4 left-4">format_quote</span>
+<p class="text-gray-600 dark:text-gray-300 text-sm italic mb-6 relative z-10 pt-4">"As a solo developer, the AI tools and procedural generation allowed me to build an entire galaxy in months instead of decades."</p>
+<div class="flex items-center">
+<img alt="Avatar of Indie Developer" class="w-12 h-12 rounded-full border-2 border-secondary/30 mr-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVv3r7eXdbLaphaXHHLDB59vmwQ0ndcUO6Edbx-qGv9wySezvpAQinIca5IbREHP_7w_otzTeYxW3MJlIEw8RIQkxJzE9HJnOJY_KYMyohU6S6dLbvgcehOBHAAfl9VBZKDNQDeqEbVoHYYbLT82vTNC1jSQ1ElOrRl_SbIma6659ZCqrFwoQHTQuAj_vAB8EpjwCxPrMjAsXinaG9s6r42-zM18elIX8VpYW59WorNg21RPHre-Uxr4iVVDgB5NG359d4I8kaV1M"/>
+<div>
+<div class="font-bold text-gray-900 dark:text-white text-sm">Sarah Chen</div>
+<div class="text-secondary text-xs uppercase tracking-wider font-display">Indie Developer</div>
+</div>
+</div>
+</div>
+<div class="glass p-8 rounded-xl relative border-t-2 border-t-primary/50">
+<span class="material-icons text-4xl text-primary/20 absolute top-4 left-4">format_quote</span>
+<p class="text-gray-600 dark:text-gray-300 text-sm italic mb-6 relative z-10 pt-4">"The real-time cinematic sequencer is unmatched. We are now shooting feature films entirely in-engine."</p>
+<div class="flex items-center">
+<img alt="Avatar of VFX Supervisor" class="w-12 h-12 rounded-full border-2 border-primary/30 mr-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdsXT6Fw_D16QF_5UuWCuVODdILTYEUL-_k0wJius6JUUB-NA24CH_aWt9TQSm5hhjutHl02tbH4ddIolVyUNRJG5aA_ZnWp20C_YT8-cbIhp_fFENY8tGt9Y7_rXBJx6c7gcoHA-aGOi0fMMWDXbt539Fj_hyNdG0d55oJRJtfrDUgf3HJWtzL2M-JMUeLEK7ABc2Lypaf79WAWGVinGPzPRsrvGbGqT3QJxUUhP0MwhVWTbO4OAv5LfBKyIZ64QYQ1it81vx-x4"/>
+<div>
+<div class="font-bold text-gray-900 dark:text-white text-sm">David Miller</div>
+<div class="text-primary text-xs uppercase tracking-wider font-display">VFX Supervisor</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-[#030305] pt-20 pb-10 border-t border-white/10 relative overflow-hidden text-gray-400">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=2000&amp;q=80')] opacity-5 mix-blend-overlay"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 lg:col-span-1">
+<div class="flex items-center space-x-2 mb-6">
+<span class="material-icons text-primary text-2xl">memory</span>
+<span class="font-display font-bold text-xl tracking-widest text-white">AETHER</span>
+</div>
+<p class="text-sm mb-6">Powering the next generation of interactive entertainment and virtual production.</p>
+<div class="flex space-x-4">
+<a class="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-primary hover:border-primary transition-colors" href="#"><span class="material-icons text-sm">share</span></a>
+<a class="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-primary hover:border-primary transition-colors" href="#"><span class="material-icons text-sm">forum</span></a>
+<a class="w-8 h-8 rounded-full glass flex items-center justify-center hover:text-primary hover:border-primary transition-colors" href="#"><span class="material-icons text-sm">code</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-white font-display font-bold uppercase tracking-wider mb-6 text-sm">Product</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Features</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Download</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Release Notes</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-display font-bold uppercase tracking-wider mb-6 text-sm">Resources</h4>
+<ul class="space-y-3 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Documentation</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Tutorials</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Marketplace</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Forums</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-display font-bold uppercase tracking-wider mb-6 text-sm">Join the Network</h4>
+<p class="text-xs mb-4">Get the latest updates on engine releases and features.</p>
+<form class="glass p-1 flex rounded border-white/10 focus-within:border-primary/50 transition-colors">
+<input class="bg-transparent border-none focus:ring-0 text-sm text-white w-full px-3 py-2 placeholder-gray-600" placeholder="Email Address" type="email"/>
+<button class="bg-primary/20 text-primary hover:bg-primary hover:text-background-dark px-4 py-2 rounded transition-colors font-display text-sm font-bold uppercase" type="submit">
+                            Join
+                        </button>
+</form>
+</div>
+</div>
+<div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
+<p>© 2024 Aether Technologies Inc. All rights reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-white transition-colors" href="#">EULA</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body></html>
