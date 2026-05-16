@@ -74,9 +74,25 @@
                         <a class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium uppercase tracking-wide transition-colors" href="#community">Community</a>
                     </div>
                 </div>
-                <div>
+                <div class="hidden md:block">
                     <button class="bg-primary text-background-dark font-display font-bold uppercase tracking-wider py-2 px-6 rounded hover:bg-secondary transition-colors shadow-[0_0_15px_rgba(0,229,255,0.5)]">Get Started</button>
                 </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <span class="material-icons text-3xl">menu</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-background-dark border-b border-white/10 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a class="text-gray-300 hover:text-primary block px-3 py-2 rounded-md text-base font-medium uppercase tracking-wide" href="#features">Features</a>
+                <a class="text-gray-300 hover:text-primary block px-3 py-2 rounded-md text-base font-medium uppercase tracking-wide" href="#showcase">Showcase</a>
+                <a class="text-gray-300 hover:text-primary block px-3 py-2 rounded-md text-base font-medium uppercase tracking-wide" href="#ecosystem">Ecosystem</a>
+                <a class="text-gray-300 hover:text-primary block px-3 py-2 rounded-md text-base font-medium uppercase tracking-wide" href="#community">Community</a>
+                <button class="w-full text-left mt-4 bg-primary text-background-dark font-display font-bold uppercase tracking-wider py-2 px-6 rounded hover:bg-secondary transition-colors">Get Started</button>
             </div>
         </div>
     </nav>
@@ -88,7 +104,7 @@
     <div class="content-wrapper" style="height: 400vh;">
         <section class="step">
             <div class="step-content" style="background: transparent; border: none; backdrop-filter: none; box-shadow: none;">
-                <h1 style="font-size: 8vw; font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1; background: none; -webkit-text-fill-color: #fff; text-shadow: 0 10px 30px rgba(0,0,0,0.8);">Unreal Engine</h1>
+                <h1 style="font-size: clamp(3rem, 10vw, 8rem); font-family: 'Orbitron', sans-serif; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1; background: none; -webkit-text-fill-color: #fff; text-shadow: 0 10px 30px rgba(0,0,0,0.8);">Unreal Engine</h1>
             </div>
         </section>
     </div>
