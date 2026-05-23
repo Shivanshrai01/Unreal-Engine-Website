@@ -91,3 +91,79 @@ if (mobileMenuBtn && mobileMenu) {
         });
     });
 }
+
+// Lenis Smooth Scroll Init
+const lenis = new Lenis({
+  duration: 1.2,
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+  direction: 'vertical',
+  gestureDirection: 'vertical',
+  smooth: true,
+  mouseMultiplier: 1,
+  smoothTouch: false,
+  touchMultiplier: 2,
+  infinite: false,
+})
+
+// Integrate Lenis with GSAP ScrollTrigger
+lenis.on('scroll', ScrollTrigger.update)
+
+gsap.ticker.add((time)=>{
+  lenis.raf(time * 1000)
+})
+
+gsap.ticker.lagSmoothing(0)
+
+// Dynamic AOS attributes
+document.querySelectorAll('.text-center.mb-20, .text-center.mb-16').forEach(el => {
+    el.setAttribute('data-aos', 'fade-up');
+    el.setAttribute('data-aos-duration', '1000');
+});
+
+document.querySelectorAll('.glass').forEach((el, index) => {
+    el.setAttribute('data-aos', 'fade-up');
+    el.setAttribute('data-aos-duration', '800');
+    el.setAttribute('data-aos-delay', String((index % 3) * 100));
+});
+
+// Initialize AOS
+AOS.init({
+    once: true,
+    offset: 50,
+});
+
+// Custom Cursor GSAP Logic
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorRing = document.querySelector('.cursor-ring');
+
+if (cursorDot && cursorRing) {
+    if (window.matchMedia("(pointer: fine)").matches) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let ringX = mouseX;
+        let ringY = mouseY;
+        let dotX = mouseX;
+        let dotY = mouseY;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        gsap.ticker.add(() => {
+            dotX += (mouseX - dotX) * 0.5;
+            dotY += (mouseY - dotY) * 0.5;
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+
+            gsap.set(cursorDot, { x: dotX, y: dotY });
+            gsap.set(cursorRing, { x: ringX, y: ringY });
+        });
+
+        const hoverElements = document.querySelectorAll('a, button, .cursor-pointer');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovered'));
+        });
+    }
+}
